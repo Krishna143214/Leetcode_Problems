@@ -6,37 +6,34 @@ import java.util.ArrayList;
 class Solution {
     public List<Integer> findClosestElements(int[] arr, int k, int x) {
 
-
-
 PriorityQueue<pair> kk=new PriorityQueue<>(
-  (a,b)->{
-if(a.diff!=b.diff){
-    return a.diff-b.diff;
-}
-return a.val-b.val;
+    (a,b)->{
+        if(a.diff!=b.diff){
+            return a.diff-b.diff;
+        }
+        return a.val-b.val;
 
-
-
-}
-
+    }
 );
 
 
 for(int i=0;i<arr.length;i++){
-    kk.add(new pair(arr[i],Math.abs(arr[i]-x)));
+    int dif=Math.abs(arr[i]-x);
+    kk.add(new pair(arr[i],dif));
 }
 
-ArrayList<Integer> nn=new ArrayList<>();
+ArrayList<Integer> s=new ArrayList<>();
 
 for(int i=0;i<k;i++){
-
-    pair l=kk.poll();
-   nn.add(l.val);
+   pair g=kk.poll();
+    s.add(g.val);
 }
 
-Collections.sort(nn);
+Collections.sort(s);
+return s;
 
-return nn;
+
+
       
 
 
@@ -54,3 +51,4 @@ class pair{
         diff=b;
     }
 }
+
