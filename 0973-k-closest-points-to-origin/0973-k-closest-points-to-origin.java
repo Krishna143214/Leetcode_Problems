@@ -2,29 +2,28 @@ import java.util.PriorityQueue;
 
 class Solution {
     public int[][] kClosest(int[][] poi, int k) {
-        PriorityQueue<pair> kk=new PriorityQueue<>(
-        (a,b)->{
-            return a.out-b.out;
-        }
+        PriorityQueue<pair> ll=new PriorityQueue<>(
+            (a,b)->{
+                return a.diff-b.diff;
+
+            }
         );
 
-
-
         for(int i=0;i<poi.length;i++){
-            kk.add(new pair(poi[i][0],poi[i][1],(poi[i][0]*poi[i][0])+(poi[i][1]*poi[i][1])));
+            ll.add(new pair(poi[i][0],poi[i][1],poi[i][0]*poi[i][0]+poi[i][1]*poi[i][1]));
         }
+
 
         int ans[][]=new int[k][2];
 
-
         for(int i=0;i<k;i++){
-           pair n= kk.poll();
-
-           ans[i][0]=n.fir;
-           ans[i][1]=n.sec;
+            pair t=ll.poll();
+            ans[i][0]=t.fir;
+            ans[i][1]=t.sec;
         }
 
         return ans;
+
 
 
     }
@@ -33,10 +32,11 @@ class Solution {
 class pair{
     int fir;
     int sec;
-    int out;
+    int diff;
 
     pair(int a,int b,int c){
         fir=a;
         sec=b;
-        out=c;    }
+        diff=c;
+    }
 }
