@@ -5,52 +5,45 @@ import java.util.ArrayList;
 
 class Solution {
     public List<String> topKFrequent(String[] word, int k) {
+        HashMap<String,Integer> ll=new HashMap<>();
 
-        HashMap<String,Integer> kk=new HashMap<>();
-
-
-        for(int i=0;i<word.length;i++){
-            if(kk.containsKey(word[i])){
-                kk.put(word[i],kk.get(word[i])+1);
+        PriorityQueue<pair> kk=new PriorityQueue<>(
+            (a,b)->{
+            if(a.freq!=b.freq){
+                return b.freq-a.freq;
             }
-
-            else{
-                kk.put(word[i],1);
-            }
-        }
-
-
-
-        PriorityQueue<pair> ll=new PriorityQueue<>(
-            (a,b) -> {
-                if(a.freq!=b.freq){
-                    return b.freq-a.freq;
-                }
-
-                return a.word.compareTo(b.word);
+            return (a.val).compareTo(b.val);    
             }
         );
 
-
-        for(Map.Entry<String,Integer> nn :kk.entrySet()){
-            ll.add(new pair(nn.getKey(),nn.getValue()));
+        for(int i=0;i<word.length;i++){
+            if(ll.containsKey(word[i])){
+                ll.put(word[i],ll.get(word[i])+1);
+            }
+            else{
+                ll.put(word[i],1);
+            }
         }
 
+        for(Map.Entry<String,Integer> nn:ll.entrySet()){
 
-        ArrayList<String> bb=new ArrayList<>();
+            kk.add(new pair(nn.getKey(),nn.getValue()));
+
+        }
+
+        ArrayList<String> ans=new ArrayList<>();
 
 
         for(int i=0;i<k;i++){
-            pair g=ll.poll();
-
-            bb.add(g.word);
+            pair o=kk.poll();
+            ans.add(o.val);
         }
 
 
-        return bb;
 
 
 
+return ans;
 
 
 
@@ -60,14 +53,10 @@ class Solution {
 }
 
 class pair{
-    String word;
+    String val;
     int freq;
- 
-
-
-    pair(String ak,int bk){
-        word=ak;
-        freq=bk;
-    
+    pair(String a,int b){
+        val=a;
+        freq=b;
     }
 }
