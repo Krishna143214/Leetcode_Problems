@@ -16,6 +16,13 @@ class Solution {
      }
 
 
-     return ((ll.size()/2)+1)/2;
+    int c=0;
+    while(!ll.isEmpty()){
+        if(ll.pop()=='['){
+            c++;
+        }
+    }
+
+    return (c+1)/2;
     }
 }
