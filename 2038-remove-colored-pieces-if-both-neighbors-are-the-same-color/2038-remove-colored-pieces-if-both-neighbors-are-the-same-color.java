@@ -5,36 +5,19 @@ class Solution {
    int a=0;
    int b=0;
 
-   int f=0;
 
-   for(int i=0;i<col.length()-1;i++){
-    if(kk.isEmpty()){
-        kk.add(col.charAt(i));
+   for(int i=1;i<col.length()-1;i++){
+
+    if(col.charAt(i-1)=='A'&&col.charAt(i)=='A'&&col.charAt(i+1)=='A'){
+        a++;
     }
-
-    else if((kk.peek()=='A'&&col.charAt(i)=='A'&&col.charAt(i+1)=='A')){
-    
-            a++;
-        
-        }
-
-        else if (kk.peek()=='B'&&col.charAt(i)=='B'&&col.charAt(i+1)=='B'){
-            b++;
-
-        }
-     else{
-         kk.add(col.charAt(i));
-     }
-
-  
+       else if(col.charAt(i-1)=='B'&&col.charAt(i)=='B'&&col.charAt(i+1)=='B'){
+        b++;
+    }
    }
 
-
-   if(a>b){
-    return true;
-   }
-   return false;
-
+   
+return a>b;
         
     }
 }
