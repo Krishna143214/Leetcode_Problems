@@ -11,7 +11,7 @@ class Solution {
     if(col.charAt(i-1)=='A'&&col.charAt(i)=='A'&&col.charAt(i+1)=='A'){
         a++;
     }
-       else if(col.charAt(i-1)=='B'&&col.charAt(i)=='B'&&col.charAt(i+1)=='B'){
+    if(col.charAt(i-1)=='B'&&col.charAt(i)=='B'&&col.charAt(i+1)=='B'){
         b++;
     }
    }
