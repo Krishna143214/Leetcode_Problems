@@ -2,7 +2,7 @@ class Solution {
     public int findMin(int[] nums) {
        int i=0;
 int j=nums.length-1;
-int k=-1;
+int k=0;
 
 while(i<=j){
     int mid=(i+j)/2;
