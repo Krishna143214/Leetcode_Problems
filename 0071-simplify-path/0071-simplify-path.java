@@ -1,67 +1,72 @@
 import java.util.Stack;
 class Solution {
     public String simplifyPath(String path) {
+        path=path+"/";
 
-Stack<String> kk=new Stack<>();
 
-path=path+"/";
-StringBuilder sb=new StringBuilder();
+        Stack<String> kk=new Stack<>();
 
-for(int i=0;i<path.length();i++){
-    if(path.charAt(i)=='/'){
-        if(sb.length()==0){
-            continue;
-        }
 
-        else if(sb.toString().equals(".")){
-            sb.setLength(0);
+      StringBuilder ss=new StringBuilder();
 
-        }
-        else if(sb.toString().equals("..")){
-            if(!kk.isEmpty()){
-                kk.pop();
-                 sb.setLength(0);
+
+        for(int i=0;i<path.length();i++){
+
+            if(path.charAt(i)=='/'){
+                if(ss.length()>0){
+                    if(ss.toString().equals(".")){
+                        ss.setLength(0);
+
+                    }
+
+                    else if(ss.toString().equals("..")){
+                        if(!kk.isEmpty()){
+                            kk.pop();
+                        }
+                        ss.setLength(0);
+                    }
+
+                    else{
+                        kk.push(ss.toString());
+                        ss.setLength(0);
+                    }
+                }
             }
-            sb.setLength(0);
+
+            else{
+                ss.append(path.charAt(i));
+            }
+
+
+
         }
-        else{
-            kk.push(sb.toString());
-            sb.setLength(0);
+
+
+        if(kk.isEmpty()){
+            return new String("/");
         }
 
-    }
 
-    else{
-        sb.append(path.charAt(i));
-    }
-}
+        Stack<String> mm=new Stack<>();
 
-
-if(kk.isEmpty()){
-    return new String("/");
-}
-
-
-Stack<String> ll=new Stack<>();
-
-while(!kk.isEmpty()){
-    ll.push(kk.pop());
-}
-
-
-StringBuilder ans=new StringBuilder();
-
-while(!ll.isEmpty()){
-    ans.append("/");
-    ans.append(ll.pop());
-}
+        while(!kk.isEmpty()){
+            mm.push(kk.pop());
+        }
 
 
 
-return ans.toString();
+        StringBuilder r=new StringBuilder();
+
+
+        while(!mm.isEmpty()){
+            r.append("/");
+            r.append(mm.pop());
+        }
 
 
 
+
+return r.toString();
 
 
 
