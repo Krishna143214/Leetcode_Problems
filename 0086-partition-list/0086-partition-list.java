@@ -11,60 +11,61 @@
 class Solution {
     public ListNode partition(ListNode head, int x) {
 
-        if(head==null||head.next==null){
-            return head;
-
-        }
-
-        int arr1[]=new int[200];
-        int k=0;
-        int arr2[]=new int[200];
-        int l=0;
-        ListNode t=head;
-
-        while(t!=null){
-            if(t.val<x){
-            arr1[k]=t.val;
-            k++;}
-
-            else if(t.val>=x){
-                arr2[l]=t.val;
-                l++;
-            }
-
-            t=t.next;
-
-          
-        }
-
-if(l==0||k==0){
+if(head==null||head.next==null){
     return head;
 }
 
+int arr[]=new int[200];
+int i=0;
+int arr2[]=new int[200];
+int j=0;
+
+ListNode t=head;
 
 
-    ListNode h2=new ListNode(arr1[0]);
-    ListNode t2=h2;
+while(t!=null){
+    if(t.val>=x){
+        arr[i]=t.val;
+        i++;
+    }
+    else{
+        arr2[j]=t.val;
+        j++;
+    }
 
-    for(int i=1;i<k;i++){
-        ListNode yy=new ListNode(arr1[i]);
-        t2.next=yy;
+    t=t.next;
+}
+
+if(j>0){
+
+    ListNode h=new ListNode(arr2[0]);
+    ListNode t2=h;
+
+    for(int ii=1;ii<j;ii++){
+        ListNode s=new ListNode(arr2[ii]);
+        t2.next=s;
+        t2=t2.next;
+    }
+     for(int ii=0;ii<i;ii++){
+        ListNode s=new ListNode(arr[ii]);
+        t2.next=s;
         t2=t2.next;
     }
 
-    for(int j=0;j<l;j++){
-        ListNode oo=new ListNode(arr2[j]);
-        t2.next=oo;
+
+    return h;
+
+}
+  ListNode h=new ListNode(arr[0]);
+    ListNode t2=h;
+        for(int ii=1;ii<i;ii++){
+        ListNode s=new ListNode(arr[ii]);
+        t2.next=s;
         t2=t2.next;
     }
-
-
-
-return h2;
-
   
 
-        
+     return h;   
 
      
         
