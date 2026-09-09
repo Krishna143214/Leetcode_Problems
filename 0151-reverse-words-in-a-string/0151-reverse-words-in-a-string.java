@@ -3,30 +3,35 @@ import java.util.Stack;
 class Solution {
     public String reverseWords(String s) {
         Stack<String> kk=new Stack<>();
-
         s=s+" ";
-        
-StringBuilder ll=new StringBuilder();
-        for(int i=0;i<s.length();i++){
-            if(s.charAt(i)==' '){
-                if(ll.length()>0){
-                kk.push(ll.toString());
-                ll.setLength(0);}
-            }
-            else{
-                ll.append(s.charAt(i));
-            }
+
+StringBuilder jk=new StringBuilder();
+
+for(int i=0;i<s.length();i++){
+    if(s.charAt(i)==' '){
+        if(jk.length()>0){
+            kk.push(jk.toString());
+            jk.setLength(0);
         }
+    }
+
+    else{
+        jk.append(s.charAt(i));
+    }
+}
 
 
-        while(!kk.isEmpty()){
-            ll.append(kk.pop());
-            ll.append(' ');
-        }
+if(kk.isEmpty()){
+    return new String(" ");
+}
+while(!kk.isEmpty()){
+    jk.append(kk.pop());
+    jk.append(' ');
+}
 
-        ll.deleteCharAt(ll.length()-1);
-        return ll.toString();
+jk.deleteCharAt(jk.length()-1);
 
+return jk.toString();
 
         }
     }
