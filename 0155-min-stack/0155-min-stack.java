@@ -8,34 +8,39 @@ class MinStack {
     }
     
     public void push(int value) {
-        if(main.isEmpty()){
-            main.push(value);
-            min.push(value);
+    main.push(value);
+
+    if(min.isEmpty()){
+        min.push(value);
+    }
+    else{
+        if(min.peek()<value){
+            min.push(min.peek());
         }
         else{
-            main.push(value);
-            if(min.peek()<value){
-                min.push(min.peek());
-            }
-            else{
-                min.push(value);
-            }
+            min.push(value);
         }
+    }
         
     }
     
     public void pop() {
-        main.pop();
-        min.pop();
+       min.pop();
+       main.pop();
         
     }
     
     public int top() {
         return main.peek();
+     
     }
     
     public int getMin() {
-        return min.peek();
+   if(min.isEmpty()){
+    return -1;
+   }
+
+   return min.peek();
         
     }
 }
