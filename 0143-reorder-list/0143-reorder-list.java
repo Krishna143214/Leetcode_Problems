@@ -10,52 +10,69 @@
  */
 class Solution {
     public void reorderList(ListNode head) {
+if(head==null || head.next==null){
 
-        if(head.next==null|| head.next.next==null){
-            return ;
-        }
-  int arr[]=new int[50000];
-  int k=0;
+    return ;
+}
 
-  ListNode t=head;
 
-  while(t!=null){
+
+ int arr[]=new int[50000];
+
+ ListNode t=head;
+
+ int k=0;
+
+ while(t!=null){
     arr[k]=t.val;
-    t=t.next;
     k++;
-  }
+    t=t.next;
 
-  int res[]=new int[k];
-  int j=0;
+ }
 
-  
-    int l=0;
-    int h=k-1;
 
-    while(l<h){
-        res[j]=arr[l];
-        j++;
-        res[j]=arr[h];
-        j++;
-        l++;
-        h--;
 
-    }
+ int res[]=new int[k];
+ int n=0;
 
-    if(k%2!=0){
-        res[j]=arr[l];
-        j++;
-    }
+ int i=0;
+ int j=k-1;
+
+ while(i<j){
+    res[n]=arr[i];
+    n++;
+    i++;
+    res[n]=arr[j];
+    n++;
+    j--;
+
+ }
+
+ if(k%2!=0){
+    res[n]=arr[i];
+    n++;
+ }
+
 
 
 ListNode t2=head;
-int i=0;
+int m=0;
 
 while(t2!=null){
-    t2.val=res[i];
+    t2.val=res[m];
+    m++;
     t2=t2.next;
-    i++;
 }
+
+ 
+ 
+return;
+
+
+
+
+
+
 
         
     }
