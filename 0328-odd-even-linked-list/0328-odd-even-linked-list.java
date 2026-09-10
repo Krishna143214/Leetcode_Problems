@@ -10,49 +10,73 @@
  */
 class Solution {
     public ListNode oddEvenList(ListNode head) {
-    
-        if(head==null||head.next==null){
+
+        if(head==null || head.next==null){
             return head;
         }
+int arr[]=new int[5000];
+int k=0;
+int a2[]=new int[5000];
+int l=0;
 
-        int arr[]=new int[5000];
-        int k=0;
-        int arr2[]=new int[5000];
-        int l=0;
+int m=1;
 
-        ListNode t=head;
-        int c=1;
 
-        while(t!=null){
-            if(c%2!=0){
-                arr[k]=t.val;
-                k++;
-            }
-            else{
-                arr2[l]=t.val;
-                l++;
-            }
-            c++;
-            t=t.next;
+ListNode temp=head;
 
-        }
+while(temp!=null){
 
-        ListNode h2=new ListNode(arr[0]);
-        ListNode t3=h2;
+    if(m%2!=0){
 
-        for(int i=1;i<k;i++){
-            ListNode f=new ListNode(arr[i]);
-            t3.next=f;
-            t3=t3.next;
-        }
+        arr[k]=temp.val;
+        k++;
+    }
+    else{
+        a2[l]=temp.val;
+        l++;
+    }
+    temp=temp.next;
+    m++;
+}
 
-        for(int j=0;j<l;j++){
-            ListNode g=new ListNode(arr2[j]);
-            t3.next=g;
-            t3=t3.next;
-        }
 
-        return h2;
+
+      ListNode h=new ListNode(arr[0]);
+    ListNode t=h;
+
+    for(int i=1;i<k;i++){
+        ListNode mm=new ListNode(arr[i]);
+        t.next=mm;
+        t=t.next;
+
+    }
+        for(int i=0;i<l;i++){
+        ListNode mm=new ListNode(a2[i]);
+        t.next=mm;
+        t=t.next;
+
+    }
+
+    return h;
+    
+
+
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+    
+  
 
     }
 }
