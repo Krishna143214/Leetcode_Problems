@@ -14,41 +14,34 @@ class Solution {
         );
 
 
+HashMap<Character,Integer> ll=new HashMap<>();
+
+for(int i=0;i<s.length();i++){
+    if(ll.containsKey(s.charAt(i))){
+        ll.put(s.charAt(i),ll.get(s.charAt(i))+1);
+
+    }
+    else{
+        ll.put(s.charAt(i),1);
+    }
+}
+
+for(int i=0;i<s.length();i++){
+    kk.add(new pair(s.charAt(i),ll.get(s.charAt(i))));
+}
 
 
-
-        HashMap<Character,Integer> ss=new HashMap<>();
-
-        for(int i=0;i<s.length();i++){
-            if(ss.containsKey(s.charAt(i))){
-                ss.put(s.charAt(i),ss.get(s.charAt(i))+1);
-            }
-            else{
-                ss.put(s.charAt(i),1);
-            }
-        }
+StringBuilder nn=new StringBuilder();
 
 
-        for(Map.Entry<Character,Integer> ll:ss.entrySet()){
-
-            kk.add(new pair(ll.getKey(),ll.getValue()));
-        }
-
-        StringBuilder ans=new StringBuilder();
-
-        while(!kk.isEmpty()){
-            pair a=kk.poll();
-          for(int i=0;i<a.freq;i++){
-            ans.append(a.val);
-          }
-
-          
-
-        }
-
-
-        return ans.toString();
+while(!kk.isEmpty()){
+    pair ff=kk.poll();
+    nn.append(ff.val);
+}
   
+
+
+  return nn.toString();
 
         
     }
@@ -58,9 +51,11 @@ class pair{
     char val;
     int freq;
 
-    pair(char c,int b){
-        val=c;
+    pair(char a,int b){
+        val=a;
         freq=b;
     }
 }
+
+
 
