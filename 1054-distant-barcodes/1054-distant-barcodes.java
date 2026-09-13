@@ -2,6 +2,7 @@ import java.util.HashMap;
 import java.util.PriorityQueue;
 class Solution {
     public int[] rearrangeBarcodes(int[] ba) {
+
         HashMap<Integer,Integer> kk=new HashMap<>();
         for(int i=0;i<ba.length;i++){
             if(kk.containsKey(ba[i])){
@@ -13,7 +14,8 @@ class Solution {
         }
 
 
-        PriorityQueue<pair> ll=new PriorityQueue<>(
+
+        PriorityQueue<pair> ll =new PriorityQueue<>(
             (a,b)->{
                 if(a.freq!=b.freq){
                     return b.freq-a.freq;
@@ -21,48 +23,50 @@ class Solution {
                 return a.val-b.val;
             }
         );
+  
 
 
-        for(Map.Entry<Integer,Integer> nn:kk.entrySet()){
-            ll.add(new pair(nn.getKey(),nn.getValue()));
-        }
 
-int ans[]=new int[ba.length];
-int h=0;
-
-        while(ll.size()>1){
-            pair a=ll.poll();
-            ans[h]=a.val;
-            h++;
-            pair b=ll.poll();
-            ans[h]=b.val;
-            h++;
-            int v=a.freq-1;
-            int x=b.freq-1;
+  for(Map.Entry<Integer,Integer> nn:kk.entrySet()){
+    ll.add(new pair(nn.getKey(),nn.getValue()));
+  }
 
 
-            if(v>0){
-                ll.add(new pair(a.val,v));
-            }
-            if(x>0){
-                ll.add(new pair(b.val,x));
-            }
-        }
 
-        if(!ll.isEmpty()){
+  int res[]=new int[ba.length];
 
-            pair j=ll.poll();
+  int k=0;
 
-            if(j.freq>1){
-                return new int[]{-1,-1};
-            }
-            ans[h]=j.val;
-            h++;
+  while(ll.size()>1){
+    pair a=ll.poll();
+    pair b=ll.poll();
 
+    res[k]=a.val;
+    k++;
+    res[k]=b.val;
+    k++;
 
-        }
+    if(a.freq<=1){
 
-        return ans;
+    }
+    else{
+        ll.add(new pair(a.val,a.freq-1));
+    }
+     if(b.freq<=1){
+
+    }
+    else{
+        ll.add(new pair(b.val,b.freq-1));
+    }
+  }
+
+  if(!ll.isEmpty()){
+    pair n=ll.poll();
+    res[k]=n.val;
+    k++;
+  }
+
+  return res;
 
 
         
