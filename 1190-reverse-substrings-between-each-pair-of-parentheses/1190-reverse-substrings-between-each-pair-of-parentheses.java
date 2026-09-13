@@ -5,39 +5,38 @@ class Solution {
 
 Stack<Character> kk=new Stack<>();
 
-
 for(int i=0;i<s.length();i++){
     if(kk.isEmpty()){
         kk.push(s.charAt(i));
     }
 
     else if(s.charAt(i)==')'){
-        StringBuilder jj=new StringBuilder();
+      StringBuilder ll=new StringBuilder();
         while(kk.peek()!='('){
-            jj.append(kk.pop());
+            ll.append(kk.pop());
         }
         kk.pop();
 
-        String l=jj.toString();
-        for(int ll=0;ll<l.length();ll++){
-            kk.push(l.charAt(ll));
+        String ss=ll.toString();
+
+        for(int j=0;j<ss.length();j++){
+            kk.push(ss.charAt(j));
         }
-
-
-
     }
+
     else{
         kk.push(s.charAt(i));
     }
 }
 
-StringBuilder out=new StringBuilder();
+
+StringBuilder res=new StringBuilder();
 
 while(!kk.isEmpty()){
-    out.append(kk.pop());
+    res.append(kk.pop());
 }
 
-return out.reverse().toString();
+return res.reverse().toString();
 
         
     }
