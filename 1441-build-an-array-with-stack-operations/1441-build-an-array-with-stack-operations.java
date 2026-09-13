@@ -4,30 +4,27 @@ import java.util.ArrayList;
 class Solution {
     public List<String> buildArray(int[] target, int n) {
 
-Stack<Integer> kk=new Stack<>();
-ArrayList<String> jj=new ArrayList<>();
-int i=1;
-int j=0;
+ArrayList<String> kk=new ArrayList<>();
+int nn=1;
+int i=0;
 
-while(j<target.length){
-   
-        kk.push(i);
-        jj.add("Push");
-        if(i!=target[j]){
-            kk.pop();
-            jj.add("Pop");
+while(i<target.length&&nn<=n){
 
-        
-        }
-        else{
-            j++;
-        }
+    if(nn==target[i]){
+        kk.add("Push");
         i++;
-    
+    }
+    else{
+        kk.add("Push");
+        kk.add("Pop");
+    }
+
+nn++;
+
+
 }
 
-return jj;
-
+return kk;
 
     }}
 
