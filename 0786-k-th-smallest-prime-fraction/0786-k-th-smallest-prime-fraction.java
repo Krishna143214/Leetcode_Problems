@@ -1,24 +1,32 @@
 import java.util.PriorityQueue;
 class Solution {
     public int[] kthSmallestPrimeFraction(int[] arr, int k) {
+
         PriorityQueue<pair> kk=new PriorityQueue<>(
-        (a,b)->{
-            return Double.compare(a.val,b.val);
-        }
+            (a,b)-> {
+                if(a.dif!=b.dif){
+                    return Double.compare(a.dif,b.dif);
+                }
+                return a.fir-b.fir;
+            }
         );
 
         for(int i=0;i<arr.length;i++){
             for(int j=i+1;j<arr.length;j++){
-                kk.add(new pair(arr[i],arr[j],(double)arr[i]/arr[j]));
+
+                double dou=(double)arr[i]/(double)arr[j];
+
+                kk.add(new pair(arr[i],arr[j],dou));
+
             }
         }
+for(int i=0;i<k-1;i++){
+    kk.poll();
+}
 
-        for(int i=1;i<k;i++){
-            pair l=kk.poll();
+pair nn=kk.poll();
 
-        }
-
-        return new int[]{kk.peek().ii,kk.peek().jj};
+return new int[]{nn.fir,nn.sec};
 
 
     
@@ -26,13 +34,14 @@ class Solution {
     }
 }
 class pair{
-    int ii;
-    int jj;
-    double val;
+    int fir;
+    int sec;
+    double dif;
 
     pair(int a,int b,double c){
-        ii=a;
-        jj=b;
-        val=c;
+        fir=a;
+        sec=b;
+        dif=c;
     }
 }
+
