@@ -5,35 +5,37 @@ import java.util.Collections;
 class Solution {
     public int minStoneSum(int[] piles, int k) {
 
-        PriorityQueue<Integer> kk=new PriorityQueue<>(Collections.reverseOrder());
+     PriorityQueue<Integer> kk=new PriorityQueue<>(Collections.reverseOrder());
 
-        for(int i=0;i<piles.length;i++){
-            kk.add(piles[i]);
-        }
 
-        for(int i=0;i<k;i++){
-            int a=kk.poll();
-            int val=a/2;
+     for(int i=0;i<piles.length;i++){
+        kk.add(piles[i]);
+     }
 
-            if(a%2!=0){
-                val++;
-            }
-            if(val<=0){
 
+     for(int i=0;i<k;i++){
+        int kkk=kk.poll();
+        
+        int b=kkk/2;
+
+        
+            if(kkk%2!=0){
+                 kk.add(b+1);
             }
             else{
-                kk.add(val);
-            }        }
+            kk.add(b);}
+        
+     }
 
 
-            int c=0;
+     int c=0;
 
-            while(!kk.isEmpty()){
-                c=c+kk.poll();
-            }
+     while(!kk.isEmpty()){
+        c=c+kk.poll();
+     }
 
 
-            return c;
+     return c;
 
     }
 }
