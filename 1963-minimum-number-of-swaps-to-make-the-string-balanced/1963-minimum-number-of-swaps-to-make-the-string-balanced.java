@@ -2,27 +2,32 @@
 import java.util.Stack;
 class Solution {
     public int minSwaps(String s) {
-     Stack<Character> ll=new Stack<>();
+     Stack<Character> kk=new Stack<>();
+
      for(int i=0;i<s.length();i++){
-        if(ll.isEmpty()){
-            ll.push(s.charAt(i));
+        if(kk.isEmpty()){
+            kk.push(s.charAt(i));
         }
-        else if(ll.peek()=='['&&s.charAt(i)==']'){
-            ll.pop();
+
+        else if(kk.peek()=='['&&s.charAt(i)==']'){
+            kk.pop();
         }
+
         else{
-            ll.push(s.charAt(i));
+               kk.push(s.charAt(i));
         }
      }
 
 
-    int c=0;
-    while(!ll.isEmpty()){
-        if(ll.pop()=='['){
+     int c=0;
+
+     while(!kk.isEmpty()){
+        if(kk.pop()=='['){
             c++;
         }
-    }
+     }
 
-    return (c+1)/2;
+
+     return (c+1)/2;
     }
 }
