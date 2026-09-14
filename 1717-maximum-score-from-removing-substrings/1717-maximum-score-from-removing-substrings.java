@@ -2,104 +2,106 @@
 import java.util.Stack;
 class Solution {
     public int maximumGain(String s, int x, int y) {
-if(x>=y){
-    int count=0;
+
+
+if(x>y){
+    int c=0;
     Stack<Character> kk=new Stack<>();
+
     for(int i=0;i<s.length();i++){
         if(kk.isEmpty()){
             kk.push(s.charAt(i));
         }
-
         else if(kk.peek()=='a'&&s.charAt(i)=='b'){
-            count=count+x;
             kk.pop();
-            
+            c=c+x;
+
         }
         else{
             kk.push(s.charAt(i));
         }
     }
 
-    StringBuilder ll=new StringBuilder();
 
+
+    StringBuilder sb=new StringBuilder();
     while(!kk.isEmpty()){
-        ll.append(kk.pop());
+        sb.append(kk.pop());
     }
 
 
-    String ans=ll.reverse().toString();
+    String b=sb.reverse().toString();
 
-    Stack<Character> gg=new Stack<>();
+    
 
-    for(int i=0;i<ans.length();i++){
-        if(gg.isEmpty()){
-            gg.push(ans.charAt(i));
+
+      for(int i=0;i<b.length();i++){
+        if(kk.isEmpty()){
+            kk.push(b.charAt(i));
         }
-
-        else if(gg.peek()=='b'&&ans.charAt(i)=='a'){
-            count=count+y;
-            gg.pop();
+        else if(kk.peek()=='b'&&b.charAt(i)=='a'){
+            kk.pop();
+            c=c+y;
 
         }
         else{
-            gg.push(ans.charAt(i));
-
+            kk.push(b.charAt(i));
         }
     }
 
-    return count;
-
-}
+return c;}
 
 
 
-int val=0;
-Stack<Character> jj=new Stack<>();
 
-for(int i=0;i<s.length();i++){
-    if(jj.isEmpty()){
-        jj.push(s.charAt(i));
+int c=0;
+    Stack<Character> kk=new Stack<>();
+
+    for(int i=0;i<s.length();i++){
+        if(kk.isEmpty()){
+            kk.push(s.charAt(i));
+        }
+        else if(kk.peek()=='b'&&s.charAt(i)=='a'){
+            kk.pop();
+            c=c+y;
+
+        }
+        else{
+            kk.push(s.charAt(i));
+        }
     }
 
-    else if(jj.peek()=='b'&& s.charAt(i)=='a'){
-        val=val+y;
-        jj.pop();
 
+
+    StringBuilder sb=new StringBuilder();
+    while(!kk.isEmpty()){
+        sb.append(kk.pop());
     }
 
-    else{
-        jj.push(s.charAt(i));
-    }
-}
 
-StringBuilder out=new StringBuilder();
+    String b=sb.reverse().toString();
 
-while(!jj.isEmpty()){
-    out.append(jj.pop());
-}
+    
 
-String show=out.reverse().toString();
 
-Stack<Character> st=new Stack<>();
+      for(int i=0;i<b.length();i++){
+        if(kk.isEmpty()){
+            kk.push(b.charAt(i));
+        }
+        else if(kk.peek()=='a'&&b.charAt(i)=='b'){
+            kk.pop();
+            c=c+x;
 
-for(int i=0;i<show.length();i++){
-
-    if(st.isEmpty()){
-        st.push(show.charAt(i));
-    }
-
-    else if(st.peek()=='a'&&show.charAt(i)=='b'){
-        val=val+x;
-        st.pop();
+        }
+        else{
+            kk.push(b.charAt(i));
+        }
     }
 
-    else{
-        st.push(show.charAt(i));
-    }
-}
+return c;
 
 
-return val;
+
 
 
 
