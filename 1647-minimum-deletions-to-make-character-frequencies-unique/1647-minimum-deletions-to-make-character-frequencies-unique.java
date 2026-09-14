@@ -13,28 +13,25 @@ class Solution {
   }
 int c=0;
 
-  HashSet<Integer> ss=new HashSet<>();
+  HashMap<Integer,Integer> ss=new HashMap<>();
 
   for(Map.Entry<Character,Integer> nn:kk.entrySet()){
+    if(ss.containsKey(nn.getValue())){
+       int l=nn.getValue();
 
-    if(ss.contains(nn.getValue())){
-
-        int k=nn.getValue();
-        while(k>0&&ss.contains(k)){
-            k--;
-            c++;
+        while(l>0&&ss.containsKey(l)){
+l--;
+c++;
         }
 
-        if(k>0){
-            ss.add(k);
+        if(l>=0){
+                ss.put(l,1);
         }
 
     }
-
     else{
-        ss.add(nn.getValue());
+        ss.put(nn.getValue(),1);
     }
- 
   }
 
   return c;
