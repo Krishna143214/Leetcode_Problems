@@ -4,37 +4,36 @@ import java.util.Collections;
 class Solution {
     public int maximumScore(int a, int b, int c) {
 
-     PriorityQueue<Integer> kk=new PriorityQueue<>(Collections.reverseOrder());
-     kk.add(a);
-     kk.add(b);
-     kk.add(c);
-
-     int d=0;
-
-     while(kk.size()>1){
-        int f=kk.poll()-1;
-        int n=kk.poll()-1;
-
-        if(f<=0){
-
-        }
-        else{
-            kk.add(f);
-        }
+  PriorityQueue<Integer> kk=new PriorityQueue<>(Collections.reverseOrder());
 
 
-         if(n<=0){
+  kk.add(a);
+  kk.add(b);
+  kk.add(c);
 
-        }
-        else{
-            kk.add(n);
-        }
-        d++;
-
-     }
+  int cc=0;
 
 
-     return d;
+  while(kk.size()>1){
+    int aa=kk.poll();
+    int bb=kk.poll();
+
+    if(aa<=1){
+      
+    }
+    else{
+          kk.add(aa-1);
+    }
+   if(bb<=1){
+
+   }
+   else{
+    kk.add(bb-1);
+   }
+    cc++;
+  }
+
+  return cc;
         
     }
 }
