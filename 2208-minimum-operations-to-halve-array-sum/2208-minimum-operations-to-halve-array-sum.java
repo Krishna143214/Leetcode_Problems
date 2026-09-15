@@ -4,36 +4,27 @@ import java.util.Collections;
 class Solution {
     public int halveArray(int[] nums) {
 PriorityQueue<Double> kk=new PriorityQueue<>(Collections.reverseOrder());
-
 double s=0;
 
 for(int i=0;i<nums.length;i++){
-    kk.add((double)nums[i]);
     s=s+nums[i];
+    kk.add((double)nums[i]);
 }
 
 
-double c=s;
+double j=s/2;
+int res=0;
 
-int ans=0;
 
-while(c>s/2){
-    double m=kk.poll();
-  
-    double n=m/2;
-c=c-n;
-    if(n<=0){
-
-    }
-
-    else{
-        kk.add(n);
-    }
-
-    ans++;
+while(s>j){
+    res++;
+    double a=kk.poll();
+    double b=a/2;
+    kk.add(b);
+    s=s-b;
 }
 
-return ans;
+return res;
         
     }
 }
