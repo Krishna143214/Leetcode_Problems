@@ -12,34 +12,29 @@ class Solution {
     public int pairSum(ListNode head) {
 
 int arr[]=new int[100000];
-int j=0;
 
 ListNode t=head;
+int l=0;
 
 while(t!=null){
-    arr[j]=t.val;
-    j++;
-    t=t.next;
-
-
-}
-
-int maxval=Integer.MIN_VALUE;
-
-int l=0;
-int h=j-1;
-
-while(l<h){
-    int val=arr[l]+arr[h];
-    if(val>maxval){
-        maxval=val;
-
-    }
+    arr[l]=t.val;
     l++;
-    h--;
+    t=t.next;
 }
 
-return maxval;
+
+int i=0;
+int j=l-1;
+int max=Integer.MIN_VALUE;
+
+
+while(i<j){
+    max=Math.max(max,arr[i]+arr[j]);
+    i++;
+    j--;
+}
+
+return max;
         
     }
 }
