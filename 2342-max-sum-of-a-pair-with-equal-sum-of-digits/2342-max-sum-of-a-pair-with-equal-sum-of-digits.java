@@ -1,49 +1,45 @@
 import java.util.HashMap;
 
 class Solution {
-    static int numval(int a){
-        int count=0;
-        while(a>0){
-            int r=a%10;
-            count=count+r;
-            a=a/10;
-        }
-        return count;
+  static int numval(int a){
+    int c=0;
+    while(a>0){
+
+        int r=a%10;
+        c=c+r;
+        a=a/10;
+        
     }
+    return c;
+  }
     public int maximumSum(int[] nums) {
-
-        HashMap<Integer,Integer> ll=new HashMap<>();
-
         int res=-1;
 
+        HashMap<Integer,Integer> kk=new HashMap<>();
+
+
         for(int i=0;i<nums.length;i++){
-            int k=numval(nums[i]);
-            if(!ll.containsKey(k)){
-                ll.put(k,nums[i]);}
+            int b=numval(nums[i]);
+
+            if(!kk.containsKey(b)){
+                kk.put(b,nums[i]);
+            }
 
             else{
-            int val=ll.get(k);
-            int out=val+nums[i];
+                int a=kk.get(b);
+                int r=a+nums[i];
 
-            if(out>res){
-                res=out;
+                res=Math.max(res,r);
             }
 
-            if(val>nums[i]){
-                ll.put(k,val);
-
+            if(kk.get(b)<nums[i]){
+                kk.put(b,nums[i]);
             }
-            else{
-                ll.put(k,nums[i]);
+        }
 
-            }
-            }       
-                
-                     }
+        return res;
 
 
-                     return res;
-        
         
     }
 }
