@@ -1,32 +1,36 @@
 import java.util.PriorityQueue;
 import java.util.HashSet;
 class SmallestInfiniteSet {
-    PriorityQueue<Integer> kk=new PriorityQueue<>();
-    HashSet<Integer> mm=new HashSet<>();
+PriorityQueue<Integer> kk=new PriorityQueue<>();
+HashSet<Integer> ll=new HashSet<>();
+
+
 
     public SmallestInfiniteSet() {
-        for(int i=1;i<=1001;i++){
-            kk.add(i);
-            mm.add(i);
-        }
+        for(int i=1;i<=1000;i++){
+    ll.add(i);
+    kk.add(i);
+}
+  
         
     }
     
     public int popSmallest() {
-        int g=kk.poll();
-        mm.remove(g);
-        
-        return g;
+        int a=kk.poll();
+        ll.remove(a);
+
+        return a;
         
         
     }
     
     public void addBack(int num) {
+
+        if(!kk.contains(num)){
+            kk.add(num);
+        }
      
-     if(!mm.contains(num)){
-        kk.add(num);
-        mm.add(num);
-     }
+ 
      
      
      
