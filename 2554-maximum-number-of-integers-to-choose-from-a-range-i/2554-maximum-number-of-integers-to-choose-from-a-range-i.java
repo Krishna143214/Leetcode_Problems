@@ -1,27 +1,32 @@
 import java.util.HashSet;
 class Solution {
     public int maxCount(int[] banned, int n, int maxSum) {
-        HashSet<Integer> kk=new HashSet<>();
+  HashSet<Integer> kk=new HashSet<>();
 
-        for(int i=0;i<banned.length;i++){
-            kk.add(banned[i]);
-        }
-int j=0;
-int c=0;
+  for(int a:banned){
+    kk.add(a);
+  } 
 
-        for(int i=1;i<=n;i++){
-            if(kk.contains(i)){
-                continue;
-            }
+  int c=0;
+  int l=0;
 
-            if(j+i<=maxSum){
-                c++;
-                j=j+i;
-            }
+  for(int i=1;i<=n;i++){
+    if(kk.contains(i)){
+        continue;
+    }
 
-        }
+    if(c+i>maxSum){
+        break;
+    }
+    c=c+i;
+    l++;
 
-        return c;
-        
+   
+
+
+  }
+
+
+  return l;       
     }
 }
