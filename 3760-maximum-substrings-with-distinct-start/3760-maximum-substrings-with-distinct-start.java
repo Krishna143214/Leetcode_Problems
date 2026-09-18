@@ -1,12 +1,13 @@
 import java.util.HashSet;
 class Solution {
     public int maxDistinct(String s) {
-        HashSet<Character> ll=new HashSet<>();
-        for(int i=0;i<s.length();i++){
-            ll.add(s.charAt(i));
-        }
+     HashSet<Character> kk=new HashSet<>();
 
-        return ll.size();
+     for(int i=0;i<s.length();i++){
+        kk.add(s.charAt(i));
+     }
+
+     return kk.size();
         
     }
 }
