@@ -9,64 +9,73 @@
  * }
  */
 class Solution {
-    static int gcd(int a,int b){
-        int gcd=1;
+static int gcd(int a,int b){
 
-        int cheak=Math.min(a,b);
+    int res=0;
 
-        for(int i=1;i<=cheak;i++){
-            if(a%i==0 && b%i==0){
-                gcd=i;
-            }
-        }
+int max=Math.max(a,b);
 
-        return gcd;
+for(int i=1;i<=max;i++){
+
+    if(a%i==0 && b%i==0){
+        res=i;
     }
+
+}
+
+
+return res;
+
+
+
+}
     public ListNode insertGreatestCommonDivisors(ListNode head) {
 
-        if(head.next==null){
+
+
+        if(head==null||head.next==null){
             return head;
         }
-        
-        ListNode t=head;
 
-        int arr[]=new int[5000];
-        int i=0;
+int arr[]=new int[5000];
+int c=0;
 
-        while(t!=null){
-            arr[i]=t.val;
-            i++;
-            t=t.next;
+ListNode t=head;
 
-
-        }
-
-        int res[]=new int[10000];
-        int f=0;
-        res[0]=arr[0];
-        f++;
-
-        for(int j=0;j<i-1;j++){
-            int v1=arr[j];
-
-            int v2=arr[j+1];
-            int v3=gcd(v1,v2);
-           
-            res[f]=v3;
-            f++;
-            res[f]=v2;
-            f++;        }
+while(t!=null){
+    arr[c]=t.val;
+    c++;
+    t=t.next;
+}
 
 
-            ListNode h2=new ListNode(res[0]);
-            ListNode t2=h2;
 
-            for(int k=1;k<f;k++){
-                ListNode kk=new ListNode(res[k]);
-                t2.next=kk;
-                t2=t2.next;
-            }
+int arr2[]=new int[10000];
+int m=0;
+for(int i=0;i<c-1;i++){
+    arr2[m]=arr[i];
+    m++;
+    int cal=gcd(arr[i],arr[i+1]);
+    arr2[m]=cal;
+    m++;
+}
+arr2[m]=arr[c-1];
+m++;
 
-return h2;
+
+
+ListNode h=new ListNode(arr2[0]);
+ListNode t2=h;
+
+for(int i=1;i<m;i++){
+    ListNode bb=new ListNode(arr2[i]);
+    t2.next=bb;
+    t2=t2.next;
+}
+
+
+return h;
+
+    
     }
 }
