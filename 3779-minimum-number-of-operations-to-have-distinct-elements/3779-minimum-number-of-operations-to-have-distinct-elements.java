@@ -3,17 +3,17 @@ import java.util.HashSet;
 class Solution {
     public int minOperations(int[] nums) {
 
-        HashSet<Integer> kk = new HashSet<>();
+HashSet<Integer> kk=new HashSet<>();
 
-        for(int i=nums.length-1;i>=0;i--){
-
-            if(kk.contains(nums[i])){
-                return (i/3)+1;
-            }
-
-            kk.add(nums[i]);
-        }
-
-        return 0;
+for(int i=nums.length-1;i>=0;i--){
+    if(kk.contains(nums[i])){
+        return (i/3)+1;
     }
+    else{
+        kk.add(nums[i]);
+    }}
+
+
+    return 0;
+}
 }
