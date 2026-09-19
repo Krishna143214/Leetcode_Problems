@@ -4,38 +4,48 @@ import java.util.Collections;
 class Solution {
     public List<Long> mergeAdjacent(int[] nums) {
 
-        Stack<Long> kk=new Stack<>();
-        ArrayList<Long> k=new ArrayList<>();
+List<Long> ll=new ArrayList<>();
 
- for (int i = 0; i < nums.length; i++) {
-    if (kk.isEmpty()) {
-        kk.push((long) nums[i]);
-    } else {
-        long curr = nums[i];
+Stack<Long> kk=new Stack<>();
 
-        while (!kk.isEmpty() && kk.peek() == curr) {
-            kk.pop();
-            curr += curr;
-        }
 
-        kk.push(curr);
+for(long a:nums){
+    if(kk.isEmpty()){
+        kk.push(a);
+    }
+
+  
+    else{
+
+
+         long curr=a;
+
+      while(!kk.isEmpty()&&kk.peek()==curr){
+        kk.pop();
+        curr+=curr;
+    
+    }
+
+       kk.push((long)curr);
+
     }
 }
 
-        while(!kk.isEmpty()){
-            k.add(kk.pop());
-        }
 
-        Collections.reverse(k);
-        return k;
+Stack<Long> res=new Stack<>();
 
-
+while(!kk.isEmpty()){
+    res.push(kk.pop());
+}
 
 
 
+while(!res.isEmpty()){
+    ll.add(res.pop());
 
+}
 
-
+return ll;
         
     }
 }
