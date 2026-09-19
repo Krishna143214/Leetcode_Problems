@@ -3,21 +3,20 @@ class Solution {
  int count=0;
 
         
-        for(int i=0;i<nums.length;i++){
-            long sum=0;
-            for(int j=i;j<nums.length;j++){
-
-                sum=sum+nums[j];
-
-                String ans=Long.toString(sum);
-
-                if(ans.charAt(0)==(x+'0')&&ans.charAt(ans.length()-1)==(x+'0')){
-                    count++;
-                }
+     for(int i=0;i<nums.length;i++){
+        long s=0;
+        for(int j=i;j<nums.length;j++){
+            s=s+nums[j];
+            String a=Long.toString(s);
+            if(a.charAt(0)-'0'==x &&a.charAt(a.length()-1)-'0'==x){
+                count++;
             }
-        }
 
-        return count;
+        }
+     }
+
+
+     return count;
         
     }
 }
