@@ -10,7 +10,7 @@ int c=0;
         while(i<k){
             c=c+piles[k];
             i++;
-            j=j-2;
+            j--;
             k=k-2;
         }
 
