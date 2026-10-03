@@ -26,9 +26,6 @@ class Solution {
             return false;
         }
 
-        else if(eq!=0&&in==0&&dec==0){
-            return true;
-        }
   
 
         return true;
