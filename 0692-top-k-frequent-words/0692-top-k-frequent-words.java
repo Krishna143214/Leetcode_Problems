@@ -5,48 +5,48 @@ import java.util.ArrayList;
 
 class Solution {
     public List<String> topKFrequent(String[] word, int k) {
-        HashMap<String,Integer> ll=new HashMap<>();
 
-        PriorityQueue<pair> kk=new PriorityQueue<>(
-            (a,b)->{
-            if(a.freq!=b.freq){
-                return b.freq-a.freq;
+        HashMap<String,Integer> kk=new HashMap<>();
+
+
+        for(int i=0;i<word.length;i++){
+            if(kk.containsKey(word[i])){
+                kk.put(word[i],kk.get(word[i])+1);
             }
-            return (a.val).compareTo(b.val);    
+            else{
+                kk.put(word[i],1);
+            }
+        }
+
+
+        PriorityQueue<pair> ll=new PriorityQueue<>(
+            (a,b)->{
+                if(a.freq!=b.freq){
+                    return b.freq-a.freq;
+                }
+
+                return a.val.compareTo(b.val);
+
             }
         );
 
-        for(int i=0;i<word.length;i++){
-            if(ll.containsKey(word[i])){
-                ll.put(word[i],ll.get(word[i])+1);
-            }
-            else{
-                ll.put(word[i],1);
-            }
-        }
-
-        for(Map.Entry<String,Integer> nn:ll.entrySet()){
-
-            kk.add(new pair(nn.getKey(),nn.getValue()));
-
-        }
-
-        ArrayList<String> ans=new ArrayList<>();
-
-
-        for(int i=0;i<k;i++){
-            pair o=kk.poll();
-            ans.add(o.val);
+        for(Map.Entry<String,Integer> mm:kk.entrySet()){
+            ll.add(new pair(mm.getKey(),mm.getValue()));
         }
 
 
 
+ArrayList<String> res=new ArrayList<>();
 
 
-return ans;
+for(int i=0;i<k;i++){
+pair n=ll.poll();
 
+res.add(n.val);
 
+}
 
+return res;
 
 
     }
