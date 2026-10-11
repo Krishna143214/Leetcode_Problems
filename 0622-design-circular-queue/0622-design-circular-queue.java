@@ -6,95 +6,108 @@ class MyCircularQueue {
     int l=0;
 
     public MyCircularQueue(int k) {
-        this.s=k;
+   this.s=k;
         
     }
     
     public boolean enQueue(int value) {
-        if(l==s){
-            return false;
-        }
 
-        else if(head==null){
-            ListNode f=new ListNode(value);
-            head=f;
-            t=head;
+        if(l<s){
+            ListNode s=new ListNode(value);
+            if(head==null){
+                head=s;
+                t=s;
+            
+            }
+            else{
+                t.next=s;
+                t=t.next;
+            }
             l++;
             return true;
         }
-        
-            ListNode a=new ListNode(value);
-            t.next=a;
-            t=t.next;
-            l++;
-            return true;  
+
+
+        return false;
+ 
     }
     
     public boolean deQueue() {
+
         if(l==0){
             return false;
         }
-        else if(l==1){
+
+        if(head.next==null){
             head=null;
             t=null;
-            l--;
-            return true; 
+            l=0;
+
+            return true;
         }
 
-       head=head.next;
-       l--;
-       return true;
+    head=head.next;
+    l--;
+    return true;
+  
         
         
     }
     
     public int Front() {
-        if(head==null){
+
+        if(l==0){
             return -1;
         }
+
         return head.val;
+    
         
     }
     
     public int Rear() {
-         if(head==null){
+        
+        if(l==0){
             return -1;
         }
-        return t.val;
-
+     
+return t.val;
         
     }
     
     public boolean isEmpty() {
-
         if(l==0){
             return true;
         }
-        return false;
+return false;
         
     }
     
     public boolean isFull() {
+
         if(l==s){
             return true;
         }
         return false;
-        
-    }
-}
+ 
+}}
 
 class ListNode{
     int val;
     ListNode next;
 
-    ListNode(){}
-    ListNode(int a){
-        val=a;
+    ListNode(int v){
+        val=v;
     }
-    ListNode(int a,ListNode b){
-        val=a;
-        next=b;
+
+    ListNode (int v,ListNode k){
+        val=v;
+        next=k;
     }
+    ListNode(){
+
+    }
+   
 }
 
 /**
