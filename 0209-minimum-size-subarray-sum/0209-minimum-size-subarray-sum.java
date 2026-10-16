@@ -1,40 +1,37 @@
 class Solution {
-    public int minSubArrayLen(int k, int[] nums) {
+    public int minSubArrayLen(int target, int[] nums) {
+
+int s=0;
+int l=0;
+int minl=Integer.MAX_VALUE;
 int i=0;
 int j=0;
 
-int c=0;
-int min=Integer.MAX_VALUE;
-
 while(j<nums.length){
-    c +=nums[j];
+    s=s+nums[j];
 
-    if(c<k){
+    if(s<target){
         j++;
     }
- 
 
-    else if(c>=k){
-        while(c>=k){
-            int l=(j-i)+1;
-            if(l<min){
-                min=l;  
-            }
-            c -=nums[i];
+    else if(s>=target){
+        while(s>=target){
+             l=j-i+1;
+            minl=Math.min(minl,l);
+            s=s-nums[i];
             i++;
         }
-
-       
         j++;
     }
 
+
 }
 
 
-if(min==Integer.MAX_VALUE){
+if(minl==Integer.MAX_VALUE){
     return 0;
 }
-return min;
+return minl;
 
 
 
