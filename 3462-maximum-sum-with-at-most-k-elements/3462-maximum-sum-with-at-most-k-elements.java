@@ -11,17 +11,11 @@ class Solution {
 
         }
 
-        if(ll.size()<limits[i]){
-
-            while(!ll.isEmpty()){
-            kk.add(ll.poll());}
-
-        }
-        else{
+       
 
         for(int m=0;m<limits[i];m++){
             kk.add(ll.poll());
-        }}
+        }
 
      }
 
