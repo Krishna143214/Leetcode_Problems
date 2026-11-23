@@ -2,34 +2,35 @@
 
 
 class ProductOfNumbers {
-
-    int arr[]=new int[40000];
-    int i=0;
+int arr[]=new int[40000];
+int i=0;
 
     public ProductOfNumbers() {
         
     }
     
     public void add(int num) {
-        arr[i]=num;
-        i++;
-      
+     
+      arr[i]=num;
+      i++;
         
     }
     
     public int getProduct(int k) {
 
-        int till=i-k;
-        int ans=1;
+        int p=i-k;
+int ans=1;
 
-        for(int j=till;j<i;j++){
-            ans=ans*arr[j];
+for(int ii=p;ii<i;ii++){
+ans=ans*arr[ii];
 
-        }
-     
-      return ans;  
+}
+
+return ans;
+        
     }
 }
+
 
 /**
  * Your ProductOfNumbers object will be instantiated and called as such:
